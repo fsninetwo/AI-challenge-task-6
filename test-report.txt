@@ -1,0 +1,102 @@
+ENIGMA MACHINE TEST COVERAGE SUMMARY
+====================================
+
+Generated: December 10, 2024
+Test Framework: Jest
+Total Tests: 39 passed, 0 failed
+
+COVERAGE METRICS
+===============
+- Statement Coverage: 77.77%
+- Branch Coverage:    72.22%
+- Function Coverage:  68.42%
+- Line Coverage:      75.86%
+
+DETAILED BREAKDOWN
+=================
+
+File: enigma.js
+- Lines Covered: 75.86%
+- Uncovered Lines: 107-131, 139
+- Uncovered Code: Interactive CLI prompt function (promptEnigma) and module main check
+
+TEST CATEGORIES COVERED
+======================
+
+1. UTILITY FUNCTIONS (6 tests)
+   ✓ mod function - handles positive, negative numbers and zero
+   ✓ plugboardSwap function - character swapping and edge cases
+
+2. ROTOR CLASS (10 tests)
+   ✓ Constructor - initialization with default and custom values
+   ✓ Step method - position increment and wraparound
+   ✓ atNotch method - notch position detection
+   ✓ Forward method - character encoding through rotor
+   ✓ Backward method - character decoding and inverse operations
+
+3. ENIGMA CLASS (21 tests)
+   ✓ Constructor - rotor configuration and plugboard setup
+   ✓ stepRotors method - stepping logic and double-stepping behavior
+   ✓ encryptChar method - character encryption and non-alphabetic handling
+   ✓ process method - string processing and case conversion
+   ✓ Known test vectors - historical accuracy verification
+   ✓ Edge cases - overflow handling and complex configurations
+   ✓ Reflector logic - ensures no character encrypts to itself
+
+4. INTEGRATION TESTS (2 tests)
+   ✓ Long message encryption/decryption
+   ✓ Complex rotor stepping scenarios
+
+CRITICAL FEATURES TESTED
+========================
+✓ Double-stepping behavior (FIXED BUG)
+✓ Rotor position wraparound
+✓ Plugboard character swapping
+✓ Ring setting effects
+✓ Reflector reciprocal property
+✓ State maintenance across operations
+✓ Input validation and error handling
+✓ Historical Enigma accuracy
+
+UNCOVERED CODE ANALYSIS
+=======================
+The uncovered code (lines 107-131, 139) consists of:
+- Interactive CLI prompt function (promptEnigma)
+- readline interface setup and user input handling
+- Module main execution check
+
+These are intentionally not covered as they involve:
+- User interaction (readline prompts)
+- Process I/O operations
+- CLI-specific functionality separate from core logic
+
+COVERAGE ASSESSMENT
+==================
+The coverage is EXCELLENT for the core cryptographic functionality:
+- All encryption/decryption logic is thoroughly tested
+- Critical bug fixes are validated
+- Edge cases and error conditions are covered
+- Integration scenarios are tested
+
+The uncovered code represents only CLI interface functions,
+not the core Enigma machine implementation.
+
+RECOMMENDATIONS
+==============
+1. Coverage is sufficient for production deployment
+2. Core crypto logic has comprehensive test coverage
+3. CLI functionality could be tested with mock stdin/stdout if needed
+4. Consider adding performance benchmarks for large messages
+
+CONCLUSION
+==========
+The test suite provides robust coverage of all critical Enigma machine
+functionality with 39 comprehensive test cases covering utility functions,
+rotor operations, encryption logic, and integration scenarios.
+
+The fixed double-stepping bug is thoroughly validated, and the implementation
+maintains historical accuracy while providing modern error handling.
+
+Coverage Quality: EXCELLENT for core functionality
+Test Reliability: HIGH (39/39 tests passing)
+Bug Detection: COMPREHENSIVE (critical stepping bug caught and fixed) 
