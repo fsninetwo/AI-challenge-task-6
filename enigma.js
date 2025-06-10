@@ -138,3 +138,13 @@ function promptEnigma() {
 if (require.main === module) {
   promptEnigma();
 }
+
+module.exports = {
+  mod,
+  plugboardSwap,
+  Rotor,
+  Enigma,
+  ROTORS,
+  REFLECTOR,
+  alphabet
+};
