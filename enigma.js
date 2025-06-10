@@ -57,8 +57,21 @@ class Enigma {
     this.plugboardPairs = plugboardPairs;
   }
   stepRotors() {
-    if (this.rotors[2].atNotch()) this.rotors[1].step();
-    if (this.rotors[1].atNotch()) this.rotors[0].step();
+    // Capture current states before any stepping
+    const rightAtNotch = this.rotors[2].atNotch();
+    const middleAtNotch = this.rotors[1].atNotch();
+    
+    // Double-stepping: if middle rotor is at notch, both middle and left step
+    if (middleAtNotch) {
+      this.rotors[1].step();
+      this.rotors[0].step();
+    }
+    // If right rotor is at notch, middle rotor steps (unless already stepped above)
+    else if (rightAtNotch) {
+      this.rotors[1].step();
+    }
+    
+    // Right rotor always steps
     this.rotors[2].step();
   }
   encryptChar(c) {
